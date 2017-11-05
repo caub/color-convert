@@ -11,30 +11,22 @@ for (var key in cssKeywords) {
 }
 
 var convert = module.exports = {
-	rgb: {channels: 3, labels: 'rgb'},
-	hsl: {channels: 3, labels: 'hsl'},
-	hsv: {channels: 3, labels: 'hsv'},
-	hwb: {channels: 3, labels: 'hwb'},
-	cmyk: {channels: 4, labels: 'cmyk'},
-	xyz: {channels: 3, labels: 'xyz'},
-	lab: {channels: 3, labels: 'lab'},
-	lch: {channels: 3, labels: 'lch'},
-	hex: {channels: 1, labels: ['hex']},
-	keyword: {channels: 1, labels: ['keyword']},
-	ansi16: {channels: 1, labels: ['ansi16']},
-	ansi256: {channels: 1, labels: ['ansi256']},
-	hcg: {channels: 3, labels: ['h', 'c', 'g']},
-	apple: {channels: 3, labels: ['r16', 'g16', 'b16']},
-	gray: {channels: 1, labels: ['gray']}
+	rgb: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'rgb'}}),
+	hsl: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'hsl'}}),
+	hsv: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'hsv'}}),
+	hwb: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'hwb'}}),
+	cmyk: Object.defineProperties({}, {channels: {value: 4}, labels: {value: 'cmyk'}}),
+	xyz: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'xyz'}}),
+	lab: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'lab'}}),
+	lch: Object.defineProperties({}, {channels: {value: 3}, labels: {value: 'lch'}}),
+	hex: Object.defineProperties({}, {channels: {value: 1}, labels: {value: ['hex']}}),
+	keyword: Object.defineProperties({}, {channels: {value: 1}, labels: {value: ['keyword']}}),
+	ansi16: Object.defineProperties({}, {channels: {value: 1}, labels: {value: ['ansi16']}}),
+	ansi256: Object.defineProperties({}, {channels: {value: 1}, labels: {value: ['ansi256']}}),
+	hcg: Object.defineProperties({}, {channels: {value: 3}, labels: {value: ['h', 'c', 'g']}}),
+	apple: Object.defineProperties({}, {channels: {value: 3}, labels: {value: ['r16', 'g16', 'b16']}}),
+	gray: Object.defineProperties({}, {channels: {value: 1}, labels: {value: ['gray']}})
 };
-
-// hide .channels and .labels properties
-for (var model in convert) {
-	convert[model] = Object.defineProperties({}, {
-		channels: {value: convert[model].channels},
-		labels: {value: convert[model].labels}
-	});
-}
 
 convert.rgb.hsl = function (rgb) {
 	var r = rgb[0] / 255;
